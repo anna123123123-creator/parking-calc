@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>停车费计算器 · Parking Fee Calculator</title>
+<meta name="description" content="免费开源、纯浏览器运行的停车费计算工具，输入入场出场时间和计费规则，按阶梯计费和每日封顶自动算出停车费。不联网。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>停车费<span class="accent">计算</span>器</h1>
+    <p class="tagline">输入入场、出场时间和计费规则（免费时长、首小时费率、续时费率、每日封顶），自动算出应付停车费。纯前端计算，不联网。</p>
+  </header>
+
+  <main class="layout">
+    <section class="controls">
+      <div class="field">
+        <label>入场时间</label>
+        <input id="entryInput" type="datetime-local">
+      </div>
+      <div class="field">
+        <label>出场时间</label>
+        <input id="exitInput" type="datetime-local">
+      </div>
+      <div class="field">
+        <label>免费时长（分钟）</label>
+        <input id="freeMinInput" type="number" value="30" min="0" step="5">
+      </div>
+      <div class="field">
+        <label>首小时费用（元）</label>
+        <input id="firstHourInput" type="number" value="5" min="0" step="0.5">
+      </div>
+      <div class="field">
+        <label>续时每小时费用（元）</label>
+        <input id="extraHourInput" type="number" value="3" min="0" step="0.5">
+      </div>
+      <div class="field">
+        <label>每日封顶（元）</label>
+        <input id="capInput" type="number" value="60" min="0" step="5">
+      </div>
+    </section>
+
+    <section class="result-wrap">
+      <div class="result-card">
+        <div class="result-num" id="feeOut">--</div>
+        <div class="result-label">应付停车费</div>
+      </div>
+      <div class="detail-box">
+        <div class="detail-row"><span>停车总时长</span><span id="durationOut" class="val"></span></div>
+        <div class="detail-row"><span>是否在免费时长内</span><span id="freeStatusOut" class="val"></span></div>
+        <div class="detail-row"><span>封顶前计费金额</span><span id="rawFeeOut" class="val"></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>MIT 协议开源，纯前端计算，不联网、不上传。跨天停车按每 24 小时应用一次封顶的简化模型估算，实际以停车场系统计费为准。</p>
+    <p>想要车牌识别、车位引导、无感支付、反向寻车的完整智慧停车系统？<a href="https://inzyxuashop.com/tingche-yuanma.html" target="_blank" rel="noopener">看看完整版智慧停车管理源码 →</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
